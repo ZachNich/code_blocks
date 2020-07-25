@@ -1,23 +1,26 @@
 import React from 'react';
 import './App.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function App() {
   return (
-    <div class="container">
-      <div class="row site-header">
-        <div class="col-sm-2">
+    <Container>
+      <Row className="site-header">
+        <Col>
           First Row
-        </div>
-      </div>
-      <div class="row site-main justify-content-between">
-        <div class="col-sm-8 game-puzzle">
+        </Col>
+      </Row>
+      <Row className="site-main">
+        <Col sm={8} className="game-puzzle">
           Second Row, First Column
-        </div>
-        <div class="col-sm game-pieces">
+        </Col>
+        <Col className="game-pieces">
           Second Row, Second Column
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
