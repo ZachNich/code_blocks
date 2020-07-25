@@ -1,4 +1,5 @@
 import React from 'react';
+import CodeArrays from './CodeArrays';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
