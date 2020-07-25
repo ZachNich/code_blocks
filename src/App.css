@@ -1,25 +1,42 @@
+.App {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.drag-container {
+  text-align: center;
+}
+
+.head {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: #cccccc;
+  width: 100%;
+}
 .container {
-    height: 100vh;
-    max-width: 90vw;
+  height: 100vh;
+  max-width: 90vw;
 }
 
 .site-header {
-    height: 15%;
-    background-color: #540D6E;
-    color: white;
-    font-size: xx-large;
+  height: 15%;
+  background-color: #540d6e;
+  color: white;
+  font-size: xx-large;
 }
 
 .site-main {
-    height: 85%;
-    padding-top: .4em;
-    background-color: white;
-    font-size: large;
-    font-weight: 600;
-    color: black;
+  height: 85%;
+  padding-top: 0.4em;
+  background-color: white;
+  font-size: large;
+  font-weight: 600;
+  color: black;
 }
 
-.game-puzzle, .game-pieces {
-    border: .3em solid #540D6E;
-    margin: .4em;
+.game-puzzle,
+.game-pieces {
+  border: 0.3em solid #540d6e;
+  margin: 0.4em;
 }
