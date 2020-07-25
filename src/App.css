@@ -1,0 +1,25 @@
+.container {
+    height: 100vh;
+    max-width: 90vw;
+}
+
+.site-header {
+    height: 15%;
+    background-color: #540D6E;
+    color: white;
+    font-size: xx-large;
+}
+
+.site-main {
+    height: 85%;
+    padding-top: .4em;
+    background-color: white;
+    font-size: large;
+    font-weight: 600;
+    color: black;
+}
+
+.game-puzzle, .game-pieces {
+    border: .3em solid #540D6E;
+    margin: .4em;
+}
