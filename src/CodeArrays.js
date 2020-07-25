@@ -1,13 +1,12 @@
 import React from 'react';
-
-const CodeArrays = () => {
-    const conditionOne = ["if", "this", "do something"]
-    const conditionTwo = ["if", "this", "do something", "else", "do something else"]
-    const conditionThree = ["if", "this", "do something", "else if", "this", "do something else", "else", "do something else"]
-    const loopFor = ["for", "every item", "in", "collection", "do something"]
-    const loopWhile = ["while", "this is true", "do something"]
-    const variable = ["this", "equals", "that"]
-}
+const CodeArrays = [
+    ["if", "this", "do something"],
+    ["if", "this", "do something", "else", "do something else"],
+    ["if", "this", "do something", "else if", "this", "do something else", "else", "do something else"],
+    ["for", "every item", "in", "collection", "do something"],
+    ["while", "this is true", "do something"],
+    ["this", "equals", "that"]
+]
 
 // const stringWords = ["'", "Strings", "are", "like", "words", "''"]
 // const stringNumbers = ["'", "Numbers", "can", "be", "strings", "sometimes,", "too", "'"]
