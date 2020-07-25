@@ -19,6 +19,11 @@ function App() {
     }
     setBlocks(tempBlocks)
   }
+
+  const noMoreLessonsAlert = () => {
+    window.alert("You've finished all your lessons! You're ready to move on to becoming a master programmer. Thanks for trying out Code Explode!")
+    setLesson(1)
+  }
   
   const nextLesson = e => {
     const stateToChange = lesson + 1
@@ -26,22 +31,25 @@ function App() {
   }
   
   useEffect(() => {
-    makeBlocks(CodeArrays[lesson - 1])
+    if (lesson > CodeArrays.length) {
+      noMoreLessonsAlert()
+    } else {
+      makeBlocks(CodeArrays[lesson - 1])
+    }
   }, [lesson])
 
   return (
     <Container>
       <Row className="site-header">
         <Col>
-          First Row
+          CodeXplode
         </Col>
       </Row>
       <Row className="site-main">
         <Col sm={8} className="game-puzzle">
-          {blocks.map(block => <BlockBomb block={block} />)}
         </Col>
         <Col className="game-pieces">
-          Second Row, Second Column
+          {blocks.map(block => <BlockBomb block={block} />)}
         </Col>
       </Row>
       <Button onClick={nextLesson} />
