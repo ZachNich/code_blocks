@@ -22,7 +22,7 @@ const BlockBomb = props => {
             <img
                 src={props.bomb}
                 width="145"
-                height="110"
+                height="125"
                 draggable="false"
             />
             <div className="bomb-text">{props.block.description}</div>
