@@ -13,10 +13,10 @@ body {
   justify-content: space-between;
 
   width: 100%;
-  max-width: 768px;
+  /* max-width: 768px; */
   height: 50vh;
 
-  overflow: hidden;
+  /* overflow: hidden; */
 
   margin: 0 auto;
   padding: 15px;
@@ -27,19 +27,24 @@ body {
   flex-direction: column;
 
   width: 100%;
-  max-width: 300px;
+  height: 100%;
+  /* max-width: 300px; */
 
-  background-color: #313131;
+  background-color: white;
 
   padding: 15px;
 }
 
 .flexbox .board .card {
   padding: 15px 25px;
-  background-color: #f3f3f3;
+  background-color: white;
 
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+.fitcontent {
+  width: fit-content;
 }
 
 #image {
@@ -60,4 +65,8 @@ body {
   height: 50px;
   position: absolute;
   /* background-color: red; */
+}
+
+.noborder {
+  border: none;
 }
