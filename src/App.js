@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import ProgressBar from "react-bootstrap/ProgressBar";
 import BlockBomb from "./BlockBomb";
 import Board from "./components/board";
 import YellowBomb from "./images/yellow_bomb.png";
@@ -27,6 +28,30 @@ function App() {
     PurpBomb,
     GreenBomb,
   ]);
+  const [xp, setXp] = useState(0);
+  const [currentLevel, setCurrentLevel] = useState(0);
+  const [xpProgress, setXpProgress] = useState(0);
+
+  const levels = { "1": 10, "2": 20, "3": 30, "4": 40, "5": 50 };
+
+  const gainXp = () => {
+    const newXp = xp + 5;
+    setXp(newXp);
+  };
+
+  const levelUp = () => {
+    setCurrentLevel(currentLevel + 1);
+    setXpProgress(0);
+    setXp(0);
+  };
+
+  if (xpProgress * 100 == 100) {
+    levelUp();
+  }
+
+  useEffect(() => {
+    setXpProgress(xp / levels[`${currentLevel + 1}`]);
+  }, [xp]);
 
   const makeBlocks = (arr) => {
     let tempBlocks = [];
@@ -46,6 +71,11 @@ function App() {
   const nextLesson = (e) => {
     const stateToChange = lesson + 1;
     setLesson(stateToChange);
+  };
+
+  const lessonCompletion = (e) => {
+    gainXp();
+    nextLesson(e);
   };
 
   const randomizeBombColors = () => {
@@ -72,15 +102,13 @@ function App() {
   return (
     <Container>
       <main className="flexbox">
-        <div className="mainHeaderbar">
-          <img src={Crazybombs} alt="crazybombs" width="96" height="96"></img>
-          &nbsp
-          <h2 className="pageName">CodeXplode</h2>
-        </div>
-        <div className="tooltip pageName">
-          Hover over me
-          <span className="tooltiptext">Tooltip text</span>
-        </div>
+        <Row className="site-header">
+          <Col>CodeXplode</Col>
+        </Row>
+        <ProgressBar
+          now={xpProgress * 100}
+          label={`${Math.floor(xpProgress * 100)}%`}
+        />
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
             <Board className="board"></Board>
@@ -100,7 +128,7 @@ function App() {
             </Board>
           </Col>
         </Row>
-        <Button onClick={nextLesson} />
+        <Button onClick={(e) => lessonCompletion(e)} />
       </main>
     </Container>
   );
