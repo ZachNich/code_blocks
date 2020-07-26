@@ -13,6 +13,9 @@ function Board(props) {
     } else if (e.target.className === "board") {
       e.target.appendChild(card);
     }
+    if (e.target.id.split("-")[1] === card.id.split("-")[1]) {
+      props.incrementSuccess()
+    }
   };
 
   const dragOver = (e) => {

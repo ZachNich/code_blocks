@@ -23,6 +23,7 @@ function App() {
   const [lesson, setLesson] = useState(1)
   const [blocks, setBlocks] = useState([])
   const [bombs, setBombs] = useState([YellowBomb, PinkBomb, BlueBomb, PurpBomb, GreenBomb])
+  const [colors, setColors] = useState([])
   const [xp, setXp] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
   const [xpProgress, setXpProgress] = useState(0);
@@ -76,9 +77,19 @@ function App() {
   };
 
   const lessonCompletion = (e) => {
-    gainXp();
-    nextLesson(e);
+    if (numberCorrect >= blocks.length) {
+      gainXp();
+      nextLesson(e);
+    } else {
+      window.alert("There's still one or two out of place. Give it another try!")
+    }
   };
+
+
+  const incrementSuccess = () => {
+    const stateToChange = numberCorrect + 1
+    setNumberCorrect(stateToChange)
+  }
 
   const randomizeBombColors = () => {
     let shuffled = bombs;
@@ -87,6 +98,19 @@ function App() {
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     setBombs(shuffled);
+    setColors(shuffled.map(bomb => {
+      if (bomb.toString().includes("blue")) {
+        return "#0E4EAD"
+      } else if (bomb.toString().includes("green")) {
+        return "#0EAD69"
+      } else if (bomb.toString().includes("purp")) {
+        return "#540D6E"
+      } else if (bomb.toString().includes("pink")) {
+        return "#EE4266"
+      } else if (bomb.toString().includes("yellow")) {
+        return "#FFD23F"
+      }
+    }))
   };
 
   useEffect(() => {
@@ -119,32 +143,32 @@ function App() {
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
             {blocks.length > 0 ? (
-              <Board className="puzzle-board">
+              <Board className="puzzle-board"  incrementSuccess={incrementSuccess} >
                 {blocks[0].description == "if" ? (
                   <Row md={2}>
                     {blocks.map(block => (
-                      <PuzzleContainer key={block.id * 2}/>
+                      <PuzzleContainer key={block.id * 2} id={`puzzle-${block.id}`} color={colors[block.id - 1]} />
                     ))}
                   </Row>
                 ) : null}
                 {blocks[0].description == "for" ? (
                   <Row md={4}>
                     {blocks.map(block => (
-                      <PuzzleContainer key={block.id * 3}/>
+                      <PuzzleContainer key={block.id * 3} id={`puzzle-${block.id}`} color={colors[block.id - 1]} />
                     ))}
                   </Row>
                 ) : null}
                 {blocks[0].description == "while" ? (
                   <Row md={2}>
                     {blocks.map(block => (
-                      <PuzzleContainer key={block.id * 4}/>
+                      <PuzzleContainer key={block.id * 4} id={`puzzle-${block.id}`} color={colors[block.id - 1]} />
                     ))}
                   </Row>
                 ) : null}
                 {blocks[0].description == "this" ? (
                   <Row md={3}>
                     {blocks.map(block => (
-                      <PuzzleContainer key={block.id * 5} />
+                      <PuzzleContainer key={block.id * 5} id={`puzzle-${block.id}`} color={colors[block.id - 1]} />
                     ))}
                   </Row>
                 ) : null}
@@ -154,15 +178,15 @@ function App() {
             )}
           </Col>
           <Col className="game-pieces">
-            <Board className="board">
+            <Board className="board" >
               {/* <TooltipsBombs /> */}
                 {blocks.map((block) => (
                   <BlockBomb
                     key={block.id * 6}
                     block={block}
                     bomb={
-                      block.id < bombs.length
-                        ? bombs[block.id]
+                      block.id <= bombs.length
+                        ? bombs[block.id - 1]
                         : bombs[block.id - bombs.length]
                     }
                   />
