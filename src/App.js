@@ -51,12 +51,9 @@ function App() {
       noMoreLessonsAlert()
     } else {
       makeBlocks(CodeArrays[lesson - 1])
+      randomizeBombColors()
     }
   }, [lesson])
-
-  useEffect(() => {
-    randomizeBombColors()
-  }, [])
 
   return (
     <Container>
