@@ -25,6 +25,21 @@
   margin: 0.4em;
 }
 
+.puzzle-container {
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 130px;
+  border: 1px solid black;
+}
+
+/* PUZZLE CONTAINER COLORS
+BLUE - 0E4EAD
+GREEN - 0EAD69
+PURPLE - 540D6E
+RED - EE4266
+YELLOW - FFD23F
+*/
 .mainHeaderbar {
   display: flex;
 }

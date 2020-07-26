@@ -8,7 +8,11 @@ function Board(props) {
     const card = document.getElementById(card_id);
     card.style.display = "block";
 
-    e.target.appendChild(card);
+    if (e.target.className === "puzzle-container" && e.target.children.length === 0) {
+      e.target.appendChild(card);
+    } else if (e.target.className === "board") {
+      e.target.appendChild(card);
+    }
   };
 
   const dragOver = (e) => {
