@@ -1,5 +1,4 @@
 import React from "react";
-// import Maincharacter from "./maincharacter/maincharacter";
 
 function Board(props) {
   const drop = (e) => {
