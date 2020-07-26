@@ -17,11 +17,6 @@ import GreenBomb from "./images/green_bomb.png";
 import Crazybombs from "./images/crazybombs.png";
 import Tooltips from "./components/tooltips/tooltips";
 import TooltipsBombs from "./components/tooltipsbombs/tooltipsBombs";
-// import Jenny from "./images/jenny.png";
-// import Popover from "react-bootstrap/Popover";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-
-// import Background from "./images/horror1.png";
 
 function App() {
   const [lesson, setLesson] = useState(1)
@@ -30,6 +25,7 @@ function App() {
   const [xp, setXp] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
   const [xpProgress, setXpProgress] = useState(0);
+  const [numberCorrect, setNumberCorrect] = useState(0)
   
   const makeBlocks = arr => {
     let tempBlocks = []
@@ -79,12 +75,16 @@ function App() {
   };
 
   const lessonCompletion = (e) => {
-    gainXp();
-    nextLesson(e);
+    // if (numberCorrect === blocks.length) {
+      gainXp();
+      nextLesson(e);
+    // } else {
+      // window.alert("Not quite! Try again. :)")
+    // }
   };
 
   const randomizeBombColors = () => {
-    let shuffled = bombs;
+    let shuffled = [YellowBomb, PinkBomb, BlueBomb, PurpBomb, GreenBomb];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -94,7 +94,7 @@ function App() {
 
   useEffect(() => {
     if (lesson > CodeArrays.length) {
-      noMoreLessonsAlert();
+      noMoreLessonsAlert()
     } else {
       makeBlocks(CodeArrays[lesson - 1])
       randomizeBombColors()
