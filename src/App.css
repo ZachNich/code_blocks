@@ -15,6 +15,32 @@
   width: 100%;
 }
 
-.xpBar {
-  height: 10px;
+.progress-bar {
+}
+
+.container {
+  height: 100vh;
+  max-width: 90vw;
+}
+
+.site-header {
+  height: 15%;
+  background-color: #540d6e;
+  color: white;
+  font-size: xx-large;
+}
+
+.site-main {
+  height: 85%;
+  padding-top: 0.4em;
+  background-color: white;
+  font-size: large;
+  font-weight: 600;
+  color: black;
+}
+
+.game-puzzle,
+.game-pieces {
+  border: 0.3em solid #540d6e;
+  margin: 0.4em;
 }
