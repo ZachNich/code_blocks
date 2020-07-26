@@ -6,3 +6,10 @@
 .noborder {
   border: none;
 }
+
+body {
+  /* background-color: #f3f3f3; */
+  background-image: url("./images/horror1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
