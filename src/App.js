@@ -86,16 +86,16 @@ function App() {
     setLesson(stateToChange);
   };
 
-  const clearBlock = () => {
-    let toRemove = document.getElementById("block1");
-    toRemove.innerHTML = "";
-  };
+  // const clearBlock = () => {
+  //   let toRemove = document.getElementById("block1");
+  //   toRemove.innerHTML = "";
+  // };
 
   const lessonCompletion = (e) => {
     gainXp();
     clearPuzzle();
     nextLesson(e);
-    clearBlock();
+    // clearBlock();
   };
 
   const randomizeBombColors = () => {
