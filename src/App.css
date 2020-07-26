@@ -24,3 +24,17 @@
   border: 0.3em solid #540d6e;
   margin: 0.4em;
 }
+
+.puzzle-container {
+  width: 150px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+/* PUZZLE CONTAINER COLORS
+BLUE - 0E4EAD
+GREEN - 0EAD69
+PURPLE - 540D6E
+RED - EE4266
+YELLOW - FFD23F
+*/

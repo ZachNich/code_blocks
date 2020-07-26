@@ -14,6 +14,7 @@ import PinkBomb from "./images/pink_bomb.png";
 import BlueBomb from "./images/blue_bomb.png";
 import PurpBomb from "./images/purp_bomb.png";
 import GreenBomb from "./images/green_bomb.png";
+import PuzzleContainer from "./components/puzzleContainer";
 
 function App() {
   const [lesson, setLesson] = useState(1);
@@ -25,9 +26,16 @@ function App() {
     PurpBomb,
     GreenBomb,
   ]);
+  const [isComplete, setIsComplete] = useState(false);
+  const [puzzle, setPuzzle] = useState([]);
   const [xp, setXp] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
   const [xpProgress, setXpProgress] = useState(0);
+
+  const clearPuzzle = () => {};
+  useEffect(() => {
+    setIsComplete(true);
+  });
 
   const levels = { "1": 10, "2": 20, "3": 30, "4": 40, "5": 50 };
 
@@ -72,6 +80,7 @@ function App() {
 
   const lessonCompletion = (e) => {
     gainXp();
+    clearPuzzle();
     nextLesson(e);
   };
 
@@ -108,7 +117,16 @@ function App() {
         />
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
-            <Board className="board"></Board>
+            <Board className="puzzle-board">
+              <Row md={blocks.length}>
+                {blocks.map(() => (
+                  <>
+                    <Col></Col>
+                    <PuzzleContainer />
+                  </>
+                ))}
+              </Row>
+            </Board>
           </Col>
           <Col className="game-pieces">
             <Board className="board">
