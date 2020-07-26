@@ -8,18 +8,38 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./main.css";
 import Yellowbomb from "./images/yellowbomb.png";
+import crazybombs from "./images/crazybombs.png";
 
 function DragDrop() {
   return (
-    <div className="">
+    <div className="background ">
       <main className="flexbox">
-        <Container>
-          <Row className="site-header">
+        <Container className="">
+          {/* <Row className="site-header">
             <Col>First Row</Col>
-          </Row>
-          <Row className="site-main">
-            <Col sm={8} className="game-puzzle">
-              <Board id="board-1" className="board"></Board>
+          </Row> */}
+          <img
+            src={crazybombs}
+            alt="yellowbomb"
+            width="120"
+            height="96"
+            draggable="false"
+          />
+
+          <Row className="site-main ">
+            <Col sm={8} className="game-puzzle ">
+              <Board id="board-1" className="board">
+                <div className="optionBoxMain">
+                  <Row xs="2" className="optionBoxIndvidual">
+                    <Col className="optionbox">Option 1</Col>
+                    <Col className="optionbox">Option 2</Col>
+                  </Row>
+                  <Row xs="2" className="optionBoxIndvidual">
+                    <Col className="optionbox">Option 3</Col>
+                    <Col className="optionbox">Option 4</Col>
+                  </Row>
+                </div>
+              </Board>
             </Col>
             <Col className="game-pieces">
               <Board id="board-2" className="board">
