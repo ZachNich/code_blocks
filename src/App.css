@@ -38,3 +38,15 @@ PURPLE - 540D6E
 RED - EE4266
 YELLOW - FFD23F
 */
+.mainHeaderbar {
+  display: flex;
+}
+
+.pageName {
+  align-self: center;
+  color: white;
+}
+
+.textWhite {
+  color: white;
+}
