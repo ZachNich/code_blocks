@@ -86,10 +86,16 @@ function App() {
     setLesson(stateToChange);
   };
 
+  const clearBlock = () => {
+    let toRemove = document.getElementById("block1");
+    toRemove.innerHTML = "";
+  };
+
   const lessonCompletion = (e) => {
     gainXp();
     clearPuzzle();
     nextLesson(e);
+    clearBlock();
   };
 
   const randomizeBombColors = () => {
@@ -187,7 +193,9 @@ function App() {
             </Board>
           </Col>
         </Row>
-        <Button onClick={(e) => lessonCompletion(e)} />
+        <Button onClick={(e) => lessonCompletion(e)}>
+          Check Mission
+        </Button>
       </main>
     </Container>
   );
