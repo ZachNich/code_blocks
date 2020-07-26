@@ -1,39 +1,3 @@
-.container {
-  height: 100vh;
-  max-width: 90vw;
-}
-
-.site-header {
-  min-height: 10vh;
-  background-color: #540d6e;
-  color: white;
-  font-size: xx-large;
-}
-
-.site-main {
-  min-height: 80vh;
-  padding-top: 0.4em;
-  background-color: white;
-  font-size: large;
-  font-weight: 600;
-  color: black;
-}
-
-.game-puzzle,
-.game-pieces {
-  border: 0.3em solid #540d6e;
-  margin: 0.4em;
-}
-
-.mainHeaderbar {
-  display: flex;
-}
-
-.pageName {
-  align-self: center;
-  color: white;
-}
-
 /* Tooltip container */
 .tooltip {
   position: relative;

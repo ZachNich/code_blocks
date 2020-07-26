@@ -77,6 +77,10 @@ function App() {
           &nbsp
           <h2 className="pageName">CodeXplode</h2>
         </div>
+        <div className="tooltip pageName">
+          Hover over me
+          <span className="tooltiptext">Tooltip text</span>
+        </div>
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
             <Board className="board"></Board>
