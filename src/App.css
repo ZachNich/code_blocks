@@ -19,7 +19,8 @@
   color: black;
 }
 
-.game-puzzle, .game-pieces {
+.game-puzzle,
+.game-pieces {
   border: 0.3em solid #540d6e;
   margin: 0.4em;
 }

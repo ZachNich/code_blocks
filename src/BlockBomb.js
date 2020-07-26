@@ -21,6 +21,7 @@ const BlockBomb = props => {
         <div className="block-bomb" id={`bomb-${props.block.id}`} draggable="true" onDragStart={dragStart} onDragOver={dragOver}>
             <img
                 src={props.bomb}
+                value={props.bomb.toString().match(/(?<=\/static\/media\/)(.*)(?=_bomb)/)[0]}
                 width="145"
                 height="125"
                 draggable="false"
