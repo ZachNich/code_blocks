@@ -14,6 +14,14 @@ import PinkBomb from "./images/pink_bomb.png";
 import BlueBomb from "./images/blue_bomb.png";
 import PurpBomb from "./images/purp_bomb.png";
 import GreenBomb from "./images/green_bomb.png";
+import Crazybombs from "./images/crazybombs.png";
+import Tooltips from "./components/tooltips/tooltips";
+import TooltipsBombs from "./components/tooltipsbombs/tooltipsBombs";
+// import Jenny from "./images/jenny.png";
+// import Popover from "react-bootstrap/Popover";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+
+// import Background from "./images/horror1.png";
 
 function App() {
   const [lesson, setLesson] = useState(1)
@@ -96,9 +104,12 @@ function App() {
   return (
     <Container>
       <main className="flexbox">
-        <Row className="site-header">
-          <Col>CodeXplode</Col>
-        </Row>
+        <div className="mainHeaderbar">
+          <img src={Crazybombs} alt="crazybombs" width="96" height="96"></img>
+          &nbsp
+          <h2 className="pageName">CodeXplode</h2>
+        </div>
+        <Tooltips />
         <ProgressBar
           now={xpProgress * 100}
           label={`${Math.floor(xpProgress * 100)}%`}
@@ -109,7 +120,17 @@ function App() {
           </Col>
           <Col className="game-pieces">
             <Board className="board">
-              {blocks.map(block => <BlockBomb block={block} bomb={block.id < bombs.length ? bombs[block.id] : bombs[block.id - bombs.length]} />)}
+              <TooltipsBombs />
+              {blocks.map((block) => (
+                <BlockBomb
+                  block={block}
+                  bomb={
+                    block.id < bombs.length
+                      ? bombs[block.id]
+                      : bombs[block.id - bombs.length]
+                  }
+                />
+              ))}
             </Board>
           </Col>
         </Row>
