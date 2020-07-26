@@ -29,7 +29,7 @@ function App() {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [xpProgress, setXpProgress] = useState(0);
 
-  const levels = { "1": 10, "2": 20, "3": 30 };
+  const levels = { "1": 10, "2": 20, "3": 30, "4": 40, "5": 50 };
 
   const gainXp = () => {
     const newXp = xp + 5;
@@ -70,6 +70,11 @@ function App() {
     setLesson(stateToChange);
   };
 
+  const lessonCompletion = (e) => {
+    gainXp();
+    nextLesson(e);
+  };
+
   const randomizeBombColors = () => {
     let shuffled = bombs;
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -101,7 +106,6 @@ function App() {
           now={xpProgress * 100}
           label={`${Math.floor(xpProgress * 100)}%`}
         />
-        <Button onClick={gainXp} />
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
             <Board className="board"></Board>
@@ -121,7 +125,7 @@ function App() {
             </Board>
           </Col>
         </Row>
-        <Button onClick={nextLesson} />
+        <Button onClick={(e) => lessonCompletion(e)} />
       </main>
     </Container>
   );
