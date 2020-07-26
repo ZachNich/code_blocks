@@ -18,27 +18,29 @@ import PuzzleContainer from "./components/puzzleContainer";
 import Crazybombs from "./images/crazybombs.png";
 import Tooltips from "./components/tooltips/tooltips";
 import TooltipsBombs from "./components/tooltipsbombs/tooltipsBombs";
-// import Jenny from "./images/jenny.png";
-// import Popover from "react-bootstrap/Popover";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-
-// import Background from "./images/horror1.png";
 
 function App() {
-  const [lesson, setLesson] = useState(1);
-  const [blocks, setBlocks] = useState([]);
-  const [bombs, setBombs] = useState([
-    YellowBomb,
-    PinkBomb,
-    BlueBomb,
-    PurpBomb,
-    GreenBomb,
-  ]);
+  const [lesson, setLesson] = useState(1)
+  const [blocks, setBlocks] = useState([])
+  const [bombs, setBombs] = useState([YellowBomb, PinkBomb, BlueBomb, PurpBomb, GreenBomb])
   const [isComplete, setIsComplete] = useState(false);
   const [puzzle, setPuzzle] = useState([]);
   const [xp, setXp] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
   const [xpProgress, setXpProgress] = useState(0);
+  const [numberCorrect, setNumberCorrect] = useState(0)
+  
+  const makeBlocks = arr => {
+    let tempBlocks = []
+    for (let i = 0; i < arr.length; i++) {
+      if (arr.indexOf(arr[i]) !== arr.lastIndexOf(arr[i])) {
+        tempBlocks.push({id: arr.indexOf(arr[i]), description: arr[i]})
+      } else {
+        tempBlocks.push({id: i+1, description: arr[i]})
+      }
+    }
+    setBlocks(tempBlocks)
+  }
 
   const clearPuzzle = () => {};
   useEffect(() => {
@@ -58,21 +60,15 @@ function App() {
     setXp(0);
   };
 
-  if (xpProgress * 100 == 100) {
-    levelUp();
-  }
+  useEffect(() => {
+    if (xpProgress * 100 == 100) {
+      levelUp();
+    }
+  }, [xpProgress])
 
   useEffect(() => {
     setXpProgress(xp / levels[`${currentLevel + 1}`]);
   }, [xp]);
-
-  const makeBlocks = (arr) => {
-    let tempBlocks = [];
-    for (let i = 0; i < arr.length; i++) {
-      tempBlocks.push({ id: i + 1, description: arr[i] });
-    }
-    setBlocks(tempBlocks);
-  };
 
   const noMoreLessonsAlert = () => {
     window.alert(
@@ -99,7 +95,7 @@ function App() {
   };
 
   const randomizeBombColors = () => {
-    let shuffled = bombs;
+    let shuffled = [YellowBomb, PinkBomb, BlueBomb, PurpBomb, GreenBomb];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -109,19 +105,13 @@ function App() {
 
   useEffect(() => {
     if (lesson > CodeArrays.length) {
-      noMoreLessonsAlert();
+      noMoreLessonsAlert()
     } else {
-      makeBlocks(CodeArrays[lesson - 1]);
+      makeBlocks(CodeArrays[lesson - 1])
+      randomizeBombColors()
     }
   }, [lesson]);
 
-  useEffect(() => {
-    randomizeBombColors();
-  }, []);
-
-  // console.log(blocks[0].description);
-  // console.log(blocks[0]);
-  console.log(blocks);
   return (
     <Container>
       <main className="flexbox">

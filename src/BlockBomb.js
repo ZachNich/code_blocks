@@ -16,9 +16,8 @@ const BlockBomb = props => {
         e.stopPropagation();
     };
     
-
     return (
-        <div className="block-bomb" id={`bomb-${props.block.id}`} draggable="true" onDragStart={dragStart} onDragOver={dragOver}>
+        <div className="block-bomb" id={`bomb-${props.block.id}`} value={props.bomb.toString().match(/(?<=\/static\/media\/)(.*)(?=_bomb)/)[0]} draggable="true" onDragStart={dragStart} onDragOver={dragOver}>
             <img
                 src={props.bomb}
                 width="145"
