@@ -13,6 +13,7 @@ import PinkBomb from "./images/pink_bomb.png";
 import BlueBomb from "./images/blue_bomb.png";
 import PurpBomb from "./images/purp_bomb.png";
 import GreenBomb from "./images/green_bomb.png";
+import Crazybombs from "./images/crazybombs.png";
 
 // import Background from "./images/horror1.png";
 
@@ -71,9 +72,11 @@ function App() {
   return (
     <Container>
       <main className="flexbox">
-        <Row className="site-header">
-          <Col>CodeXplode</Col>
-        </Row>
+        <div className="mainHeaderbar">
+          <img src={Crazybombs} alt="crazybombs" width="96" height="96"></img>
+          &nbsp
+          <h2 className="pageName">CodeXplode</h2>
+        </div>
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
             <Board className="board"></Board>
