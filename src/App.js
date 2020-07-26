@@ -78,9 +78,15 @@ function App() {
     setLesson(stateToChange);
   };
 
+  const clearBlock = () => {
+    let toRemove = document.getElementById("block1");
+    toRemove.innerHTML = "";
+  };
+
   const lessonCompletion = (e) => {
     gainXp();
     nextLesson(e);
+    clearBlock();
   };
 
   const randomizeBombColors = () => {
@@ -119,7 +125,7 @@ function App() {
         />
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
-            <Board className="board"></Board>
+            <Board id="block1" className="board"></Board>
           </Col>
           <Col className="game-pieces">
             <Board className="board">
@@ -137,7 +143,7 @@ function App() {
             </Board>
           </Col>
         </Row>
-        <Button onClick={(e) => lessonCompletion(e)} />
+        <Button onClick={(e) => lessonCompletion(e)}>Check Mission</Button>
       </main>
     </Container>
   );
