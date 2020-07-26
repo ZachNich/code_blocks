@@ -1,4 +1,3 @@
-import React from 'react';
 const CodeArrays = [
     ["if", "this", "do something"],
     ["if", "this", "do something", "else", "do something else"],
