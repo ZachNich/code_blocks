@@ -180,16 +180,16 @@ function App() {
           <Col className="game-pieces">
             <Board className="board">
               <TooltipsBombs />
-              {blocks.map((block) => (
-                <BlockBomb
-                  block={block}
-                  bomb={
-                    block.id < bombs.length
-                      ? bombs[block.id]
-                      : bombs[block.id - bombs.length]
-                  }
-                />
-              ))}
+                {blocks.map((block) => (
+                  <BlockBomb
+                    block={block}
+                    bomb={
+                      block.id < bombs.length
+                        ? bombs[block.id]
+                        : bombs[block.id - bombs.length]
+                    }
+                  />
+                ))}
             </Board>
           </Col>
         </Row>
