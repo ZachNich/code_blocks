@@ -8,10 +8,4 @@ const CodeArrays = [
     ["this", "equals", "that"]
 ]
 
-// const stringWords = ["'", "Strings", "are", "like", "words", "''"]
-// const stringNumbers = ["'", "Numbers", "can", "be", "strings", "sometimes,", "too", "'"]
-// const stringNumTest = ["'1'", "one", "two", 2, "'3'", "FOUR", "Five!", 6, 7, "'8'", 9, 10]
-// const bool = ["True", "False"]
-// const func = ["name", "do something"]
-
 export default CodeArrays

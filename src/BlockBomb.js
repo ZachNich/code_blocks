@@ -24,6 +24,7 @@ const BlockBomb = props => {
                 width="145"
                 height="125"
                 draggable="false"
+                alt="bomb"
             />
             <div className="bomb-text">{props.block.description}</div>
         </div>
