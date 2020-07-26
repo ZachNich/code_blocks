@@ -29,9 +29,7 @@ function TooltipsBombs() {
   );
 
   return (
-    <div>
       <Tooltip />
-    </div>
   );
 }
 

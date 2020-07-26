@@ -14,6 +14,7 @@ import PinkBomb from "./images/pink_bomb.png";
 import BlueBomb from "./images/blue_bomb.png";
 import PurpBomb from "./images/purp_bomb.png";
 import GreenBomb from "./images/green_bomb.png";
+import PuzzleContainer from "./components/puzzleContainer";
 import Crazybombs from "./images/crazybombs.png";
 import Tooltips from "./components/tooltips/tooltips";
 import TooltipsBombs from "./components/tooltipsbombs/tooltipsBombs";
@@ -33,9 +34,16 @@ function App() {
     PurpBomb,
     GreenBomb,
   ]);
+  const [isComplete, setIsComplete] = useState(false);
+  const [puzzle, setPuzzle] = useState([]);
   const [xp, setXp] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(0);
   const [xpProgress, setXpProgress] = useState(0);
+
+  const clearPuzzle = () => {};
+  useEffect(() => {
+    setIsComplete(true);
+  });
 
   const levels = { "1": 10, "2": 20, "3": 30, "4": 40, "5": 50 };
 
@@ -78,15 +86,16 @@ function App() {
     setLesson(stateToChange);
   };
 
-  const clearBlock = () => {
-    let toRemove = document.getElementById("block1");
-    toRemove.innerHTML = "";
-  };
+  // const clearBlock = () => {
+  //   let toRemove = document.getElementById("block1");
+  //   toRemove.innerHTML = "";
+  // };
 
   const lessonCompletion = (e) => {
     gainXp();
+    clearPuzzle();
     nextLesson(e);
-    clearBlock();
+    // clearBlock();
   };
 
   const randomizeBombColors = () => {
@@ -110,11 +119,19 @@ function App() {
     randomizeBombColors();
   }, []);
 
+  // console.log(blocks[0].description);
+  // console.log(blocks[0]);
+  console.log(blocks);
   return (
     <Container>
       <main className="flexbox">
         <div className="mainHeaderbar">
-          <img src={Crazybombs} alt="crazybombs" width="96" height="96"></img>
+          <img
+            src={Crazybombs}
+            alt="crazybombs"
+            width="96"
+            height="96"
+          ></img>
           &nbsp
           <h2 className="pageName">CodeXplode</h2>
         </div>
@@ -125,25 +142,60 @@ function App() {
         />
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
-            <Board id="block1" className="board"></Board>
+            {blocks.length > 0 ? (
+              <Board className="puzzle-board">
+                {blocks[0].description == "if" ? (
+                  <Row md={2}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+                {blocks[0].description == "for" ? (
+                  <Row md={4}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+                {blocks[0].description == "while" ? (
+                  <Row md={2}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+                {blocks[0].description == "this" ? (
+                  <Row md={3}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+              </Board>
+            ) : (
+              <Board className="puzzle-board" />
+            )}
           </Col>
           <Col className="game-pieces">
             <Board className="board">
               <TooltipsBombs />
-              {blocks.map((block) => (
-                <BlockBomb
-                  block={block}
-                  bomb={
-                    block.id < bombs.length
-                      ? bombs[block.id]
-                      : bombs[block.id - bombs.length]
-                  }
-                />
-              ))}
+                {blocks.map((block) => (
+                  <BlockBomb
+                    block={block}
+                    bomb={
+                      block.id < bombs.length
+                        ? bombs[block.id]
+                        : bombs[block.id - bombs.length]
+                    }
+                  />
+                ))}
             </Board>
           </Col>
         </Row>
-        <Button onClick={(e) => lessonCompletion(e)}>Check Mission</Button>
+        <Button onClick={(e) => lessonCompletion(e)}>
+          Check Mission
+        </Button>
       </main>
     </Container>
   );
