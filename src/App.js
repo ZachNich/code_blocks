@@ -20,9 +20,13 @@ function App() {
   const [bombs, setBombs] = useState([YellowBomb, PinkBomb, BlueBomb, PurpBomb, GreenBomb])
   
   const makeBlocks = arr => {
-    let tempBlocks = [] 
+    let tempBlocks = []
     for (let i = 0; i < arr.length; i++) {
-      tempBlocks.push({id: i+1, description: arr[i]})
+      if (arr.indexOf(arr[i]) !== arr.lastIndexOf(arr[i])) {
+        tempBlocks.push({id: arr.indexOf(arr[i]), description: arr[i]})
+      } else {
+        tempBlocks.push({id: i+1, description: arr[i]})
+      }
     }
     setBlocks(tempBlocks)
   }
@@ -69,7 +73,7 @@ function App() {
           </Col>
           <Col className="game-pieces">
             <Board className="board">
-              {blocks.map(block => <BlockBomb block={block} bomb={block.id < bombs.length ? bombs[block.id] : bombs[block.id - bombs.length]} />)}
+              {blocks.map((block, index) => <BlockBomb block={block} bomb={block.id < bombs.length ? bombs[block.id] : bombs[block.id - bombs.length]} />)}
             </Board>
           </Col>
         </Row>
