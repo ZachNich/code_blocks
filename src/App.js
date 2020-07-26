@@ -113,6 +113,9 @@ function App() {
     randomizeBombColors();
   }, []);
 
+  // console.log(blocks[0].description);
+  // console.log(blocks[0]);
+  console.log(blocks);
   return (
     <Container>
       <main className="flexbox">
@@ -133,16 +136,40 @@ function App() {
         />
         <Row className="site-main">
           <Col sm={8} className="game-puzzle">
-            <Board className="puzzle-board">
-              <Row md={blocks.length}>
-                {blocks.map(() => (
-                  <>
-                    <Col></Col>
-                    <PuzzleContainer />
-                  </>
-                ))}
-              </Row>
-            </Board>
+            {blocks.length > 0 ? (
+              <Board className="puzzle-board">
+                {blocks[0].description == "if" ? (
+                  <Row md={2}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+                {blocks[0].description == "for" ? (
+                  <Row md={4}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+                {blocks[0].description == "while" ? (
+                  <Row md={2}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+                {blocks[0].description == "this" ? (
+                  <Row md={3}>
+                    {blocks.map(() => (
+                      <PuzzleContainer />
+                    ))}
+                  </Row>
+                ) : null}
+              </Board>
+            ) : (
+              <Board className="puzzle-board" />
+            )}
           </Col>
           <Col className="game-pieces">
             <Board className="board">
