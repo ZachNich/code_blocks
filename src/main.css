@@ -35,62 +35,28 @@ body {
   flex-direction: column;
 
   width: 100%;
-  height: 100%;
-  /* max-width: 300px; */
+  .board {
+    height: 100%;
+    padding: 15px;
+  }
 
-  background-color: white;
+  .noborder {
+    border: none;
+  }
 
-  padding: 15px;
-}
+  .optionBoxMain {
+    display: flex;
+  }
 
-.flexbox .board .card {
-  padding: 15px 25px;
-  background-color: white;
+  .optionBoxIndvidual {
+    justify-content: center;
+    align-items: center;
+  }
 
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-
-.fitcontent {
-  width: fit-content;
-}
-
-#image {
-  height: 256px;
-  width: 256px;
-  background: url("https://cdn-images-1.medium.com/max/1600/1*WhDjw8GiV5o0flBXM4LXEw.png")
-    0px 0px;
-}
-
-#container {
-  width: 400px;
-  height: 400px;
-  position: relative;
-  /* background: yellow; */
-}
-#animate {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  /* background-color: red; */
-}
-
-.noborder {
-  border: none;
-}
-
-.optionBoxMain {
-  display: flex;
-}
-
-.optionBoxIndvidual {
-  justify-content: center;
-  align-items: center;
-}
-
-.optionbox {
-  height: 360px;
-  width: 380px;
-  border: 1px solid red;
-  margin: 5px;
+  .optionbox {
+    height: 360px;
+    width: 380px;
+    border: 1px solid red;
+    margin: 5px;
+  }
 }
